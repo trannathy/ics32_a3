@@ -1,10 +1,12 @@
-# ui.py
+'''
+
+ui.py contains UI commands for the program, including all the menus.
+
+'''
 
 # THY TRAN
 # THYNT1@UCI.EDU
 # 90526048
-
-from pathlib import Path
 
 OUTPUT_NOT_DSU = "\nERROR: FILE IS NOT A DSU\n"
 OUTPUT_NO_PERM = "\nERROR: PERMISSION FOR ACTION DENIED\n"
@@ -25,10 +27,25 @@ OUTPUT_EMPTY_COMMAND = "COMMAND SKIPPED, EMPTY INPUT\n"
 
 
 def welcome():
+
+    '''
+
+    Prints an initial welcome message, used for start of the program
+
+    '''
+
     print("Welcome to the DSU file explorer!")
 
 
 def command_intake_ui(mode) -> str:
+
+    '''
+
+    Contains the main command menu for creating, deleting, opening,
+    or reading a dsu file. Returns just a newline if in admin mode.
+
+    '''
+
     if not mode:
         return ("COMMAND MENU:" +
                 "\n[COMMAND] - What the command does" +
@@ -42,11 +59,19 @@ def command_intake_ui(mode) -> str:
                 "\nPlease input your command in the correct format:" +
                 "\n[COMMAND] [PATH] ([[-n]OPTION] [INPUT])\n"
                 )
-    else:
-        return "\n"
+
+    return "\n"
 
 
 def opened_file_ui(directory: str, mode: bool) -> str:
+
+    '''
+
+    Contains the menu for an opened file, including editing, printing,
+    publishing, and closing the file. Returns just a newline if in admin mode
+
+    '''
+
     if not mode:
         return ("COMMAND MENU FOR " + directory +
                 f'\n{"E - Edit Options":20}|{"P - Print Options":20}' +
@@ -61,11 +86,19 @@ def opened_file_ui(directory: str, mode: bool) -> str:
                 '\nCL - Close file, enter main commands\n' +
                 "\nPlease input your command in the correct format:" +
                 "\n[COMMAND] [[-]OPTION] [INPUT]\n")
-    else:
-        return "\n"
+
+    return "\n"
 
 
 def set_new_profile(new_attribute: str, mode):
+
+    '''
+
+    Contains the instructions for setting up a new dsu profile.
+    Returns just a newline if in admin mode.
+
+    '''
+
     if not mode:
         if new_attribute == "bio":
             optional = "OPTIONAL: "
@@ -73,5 +106,5 @@ def set_new_profile(new_attribute: str, mode):
             optional = ""
         return (optional +
                 f"\nPlease enter a new {new_attribute} for your profile:\n")
-    else:
-        return "\n"
+
+    return "\n"
